@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up Completion</title>
+    <style>
+        body {
+            background: url('background3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            font-size: 32px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .next-button {
+            display: inline-block;
+            background-color: #e2b8b8;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .next-button:hover {
+            background-color: #d19a9a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Sign-up</div>
+        <div class="progress-bar">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="message">You are Done</div>
+        <a href="http://127.0.0.1:3000/login.html" class="next-button">Done</a>
+    </div>
+</body>
+</html>
