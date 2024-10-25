@@ -109,6 +109,12 @@ def logout():
 @bp.route('/dashboard')
 @login_required
 def dashboard():
+    """
+    Displays the user's dashboard.
+
+    This view renders the dashboard template, passing the user object as a
+    template variable.
+    """
     user = db.query(User).filter(User.id == session.get('user_id')).one()
     return render_template('dashboard.html', user=user)
 
@@ -116,6 +122,13 @@ def dashboard():
 @bp.route('/therapists')
 @login_required
 def therapists():
+    """
+    Displays a list of all therapists.
+
+    This view queries all therapists from the database and renders the
+    'therapists.html' template, passing the list of therapists as a 
+    template variable.
+    """
     therapists = Therapist.query.all()
     return render_template('therapists.html', therapists=therapists)
 
@@ -123,6 +136,18 @@ def therapists():
 @bp.route('/group-chat', methods=['GET', 'POST'])
 @login_required
 def group_chat():
+    """
+    Displays a page for users to chat with each other.
+
+    If the request method is POST, it takes the message from the submission
+    form and adds it to the database as a new GroupChat object, and redirects
+    the user back to the same page.
+
+    If the request method is GET, it queries all GroupChat objects from the
+    database, ordered by the created_at timestamp in ascending order, and
+    renders the 'group-chat.html' template, passing the list of GroupChat
+    objects as a template variable.
+    """
     if request.method == 'POST':
         message = request.form['message']
         sender_id = session.get('user_id')
@@ -138,6 +163,15 @@ def group_chat():
 @bp.route('/chat/<int:therapist_id>')
 @login_required
 def chat(therapist_id):
+    """
+    Displays a page for users to chat with a therapist.
+
+    This view queries the specified therapist from the database, as well as
+    all Chat objects where the recipient_id matches the therapist_id, and
+    renders the 'chat.html' template, passing the therapist object and the
+    list of Chat objects as template variables.
+    """
+    
     therapist = Therapist.query.get(therapist_id)
     chats = Chat.query.filter_by(recipient_id=therapist_id).all()
     return render_template('chat.html', therapist=therapist, chats=chats)
@@ -146,6 +180,16 @@ def chat(therapist_id):
 @bp.route('/chat/<int:therapist_id>/send', methods=['POST'])
 @login_required
 def send_chat(therapist_id):
+    """
+    Sends a chat message to a specific therapist.
+
+    This view handles POST requests to send a chat message to the therapist
+    specified by therapist_id. It creates a new Chat object with the 
+    message from the submission form, associating it with the current user
+    as the sender and the specified therapist as the recipient. The new
+    chat is added to the database, and the user is redirected to the chat
+    page for the specified therapist.
+    """
     chat = Chat(sender_id=session.get('user_id'), recipient_id=therapist_id, message=request.form['message'])
     db.add(chat)
     db.commit()
@@ -155,12 +199,24 @@ def send_chat(therapist_id):
 @bp.route('/wellness-test')
 @login_required
 def wellness_test():
+    """
+    Displays a page for users to take a Wellness test.
+
+    This view renders the 'wellness-test.html' template.
+    """
     return render_template('wellness-test.html')
 
 
 @bp.route('/wellness-test/submit', methods=['POST'])
 @login_required
 def submit_wellness_test():
+    """
+    Handles POST requests from the Wellness test submission form.
+
+    This view creates a new WellnessTest object with the user's ID and the score
+    from the submission form, adds it to the database, and redirects the user
+    back to the dashboard.
+    """
     test = WellnessTest(user_id=session.get('user_id'), score=request.form['score'])
     db.add(test)
     db.commit()
