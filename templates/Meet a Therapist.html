@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet a Therapist</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+        .sidebar, .right-sidebar {
+            width: 250px;
+            background-color: #f5c6cb;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            font-size: large;
+            font-weight: bold;
+        }
+        .sidebar h2, .right-sidebar h2 {
+            color: #fff;
+        }
+        .sidebar ul, .right-sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li, .right-sidebar ul li {
+            margin: 20px 0;
+            color: #fff;
+        }
+        .sidebar ul li a, .right-sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar ul li a img, .right-sidebar ul li a img {
+            margin-right: 10px;
+        }
+        .sidebar ul li a:hover, .right-sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+        .sidebar ul li.selected, .right-sidebar ul li.selected {
+            background-color: #f1b0b7;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .content h1, .content h2 {
+            margin: 0;
+        }
+        .calendar {
+            margin-bottom: 20px;
+        }
+    .calendar table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 2rem;  /* Increase font size for better readability */
+    }
+    .calendar th, .calendar td {
+      padding: 15px; /* Increase padding for larger cells */
+      text-align: center;
+    }
+        .calendar .selected {
+            background-color: #e57373;
+            border-radius: 50%;
+        }
+        .time-selection {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .time-selection input, .time-selection select, .time-selection button {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+        }
+        .time-selection input[type=number] {
+            width: 60px;
+            text-align: center;
+        }
+        .time-selection button {
+            background-color: #e57373;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Meet a Therapist</h2>
+            <ul>
+              <li><a href="http://127.0.0.1:3000/dashboard.html"><img src="dashboard-icon.png" alt="Dashboard Icon"> Dashboard</a></li><hr/>
+              <li><a href="http://127.0.0.1:3000/Community.html"><img src="community-icon.png" alt="Community Icon"> Community</a></li><hr/>
+              <li><a href="#"><img src="therapist-icon.png" alt="Therapist Icon"> Meet a Therapist</a></li><hr/>
+              <li><a href="http://127.0.0.1:3000/Chat with a therapist.html"><img src="chat-icon.png" alt="Chat Icon"> Chat with a Therapist</a></li><hr/>
+              <li><a href="https://forms.gle/2J9XnW7ujA1T5Dtg7"><img src="wellness-test-icon.png" alt="Wellness Test Icon"> Take a Wellness Test</a></li><hr/>
+              <li><a href="http://127.0.0.1:3002/Progress.html"><img src="progress-icon.png" alt="Progress Icon"> Progress</a></li><hr/>
+              <li><a href="http://127.0.0.1:3000/Settings.html"><img src="settings-icon.png" alt="Settings Icon"> Settings</a></li><hr/>
+            </ul>
+        </div>
+        <main class="content">
+          <div class="calendar">
+            <table>
+                <tr>
+                    <th>M</th>
+                    <th>T</th>
+                    <th>W</th>
+                    <th>T</th>
+                    <th>F</th>
+                    <th>S</th>
+                    <th>S</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>11</td>
+                    <td class="selected">12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                </tr>
+            </table>
+        </div>
+        <div class="time-selection">
+            <input type="number" value="1" min="1" max="12"> :
+            <input type="number" value="00" min="0" max="59">
+            <select>
+                <option>AM</option>
+                <option selected>PM</option>
+            </select>
+            <button>Set</button>
+        
+        </main>
+        <div class="right-sidebar">
+            <h2>Available Therapists on the 12th </h2>
+            <ul>
+                <li>Dr. Ralph</li>
+                <li>Dr. Desmond Tetteh</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

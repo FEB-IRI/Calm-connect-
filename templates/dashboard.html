@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #f5c6cb;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            font-size: large;
+            font-weight: bold;
+        }
+        .sidebar h2 {
+            color: #fff;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+            color: #fff;
+        }
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar ul li a img {
+            margin-right: 10px;
+        }
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+        .sidebar ul li.selected {
+            background-color: #f1b0b7; /* Highlight color */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .content {
+            width: 80%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .progress, .community, .reminder, .motivation {
+            background-color: #f1b0b7;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .progress h3, .community h3, .reminder h3, .motivation h3 {
+            margin-top: 0;
+        }
+        .progress-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .progress-circle span {
+            font-size: 20px;
+            color: #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li><a href="/dashboard"><img src="static/dashboard-icon.png" alt="Dashboard Icon"> Dashboard</a></li><hr/>
+                <li><a href="/community"><img src="static/community-icon.png" alt="Community Icon"> Community</a></li><hr/>
+                <li><a href="/therapist"><img src="static/therapist-icon.png" alt="Therapist Icon"> Meet a Therapist</a></li><hr/>
+                <li><a href="/chat"><img src="static/chat-icon.png" alt="Chat Icon"> Chat with a Therapist</a></li><hr/>
+                <li><a href="https://forms.gle/2J9XnW7ujA1T5Dtg7"><img src="static/wellness-test-icon.png" alt="Wellness Test Icon"> Take a Wellness Test</a></li><hr/>
+                <li><a href="/progress"><img src="static/progress-icon.png" alt="Progress Icon"> Progress</a></li><hr/>
+                <li><a href="/settings"><img src="static/settings-icon.png" alt="Settings Icon"> Settings</a></li><hr/>
+            </ul>
+            <form action="/logout" method="get">
+                <button type="submit" style="padding: 10px 20px; font-size: 16px;">Logout</button>
+            </form>
+        </div>
+        <div class="content">
+            <div class="progress">
+                <h3>50% Complete</h3>
+                <div class="progress-circle">
+                    <span>50%</span> 
+                </div>
+                <p>You are almost done with your Wellness test</p>
+            </div>
+            <div class="community">
+                <h3>Community</h3>
+                {% for chat in chats %}
+                    <p><a href="/community/{{ chat.id }}">{{ chat.name }}</a></p>
+                {% endfor %}
+            </div>
+            <div class="reminder">
+                <h3>Reminder</h3>
+                <p>Your scheduled meeting with your therapist is in <strong>2 hours</strong></p>
+            </div>
+            <div class="motivation">
+                <h3>Daily Motivation from : Dr. Asamoah</h3>
+                <p>Don’t be afraid to seek help. Not seeking help is like walking down a never-ending dark tunnel. Seeking help is finding the light at the end of that tunnel</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Chat</title>
+    <style>
+        body 
+            {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #f5c6cb;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            font-size: large;
+            font-weight: bold;
+        }
+        .sidebar h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+            color: white;
+            font-size: 18px;
+        }
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+        .sidebar ul li.selected {
+            background-color: #f1b0b7; /* Highlight color */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar button {
+            padding: 10px 20px;
+            background-color: #f2a2a8;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+        .sidebar button a {
+            color: white;
+            text-decoration: none;
+        }
+        .chat-area {
+            width: 75%;
+            background-color: #f8d7da;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-area .message {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .chat-area .message h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .chat-area .message p {
+            margin: 5px 0 0;
+            font-size: 16px;
+            color: #666;
+        }
+        .chat-area .input-area {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+        }
+        .chat-area .input-area input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-right: 10px;
+            box-sizing: border-box;
+        }
+        .chat-area .input-area button {
+            padding: 10px 20px;
+            background-color: #f2a2a8;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Community</h2>
+            <ul>
+                {% for chat in chats %}
+                    <li><a href="/community/{{ chat.id }}">{{ chat.name }}</a><hr></li>
+                {% endfor %}
+            </ul>
+            <button><a href="/dashboard.html">Go Back</a></button> 
+        </div>
+        <div class="chat-area">
+            {% for message in messages %}
+                <div class="message">
+                    <h3>{{ message.user.username }}</h3>
+                    <p>{{ message.content }}</p>
+                </div>
+            {% endfor %}
+            <div class="input-area">
+                <input type="text" placeholder="Type your message here...">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

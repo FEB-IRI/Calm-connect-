@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with a Therapist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #f5c6cb;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar ul li a img {
+            margin-right: 10px;
+        }
+        .sidebar .therapist {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .sidebar .therapist img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .sidebar .therapist span {
+            color: white;
+            font-size: 18px;
+        }
+        .chat {
+            width: 75%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .chat .messages {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        .chat .message {
+            background-color: #f4a4a4;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            max-width: 60%;
+            color: white;
+        }
+        .chat .message.sent {
+            align-self: flex-end;
+            background-color: #f4a4a4;
+            color: white;
+        }
+        .chat .input {
+            display: flex;
+            align-items: center;
+        }
+        .chat .input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        .chat .input button {
+            background-color: #f4a4a4;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .chat .input-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat .input-area input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        .chat .input-area button {
+            background-color: #f2a2a8;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Chat with a Therapist</h2>
+            <div class="therapist">
+                <img src="static/therapist1.jpg" alt="Dr. Daniel Asamoah">
+                <span>Dr. Daniel Asamoah</span>
+            </div>
+            <div class="therapist">
+                <img src="static/therapist2.jpg" alt="Dr. Desmond Tetteh">
+                <span>Dr. Desmond Tetteh</span>
+            </div>
+            <div class="therapist">
+                <img src="static/therapist3.jpg" alt="Dr. Thomas Thompkins">
+                <span>Dr. Thomas Thompkins</span>
+            </div>
+            <button style="padding: 10px 20px; background-color: #f2a2a8; border: none; border-radius: 20px; color: white; cursor: pointer;">
+                <a href="http://127.0.0.1:3000/dashboard.html" style="text-decoration: none; color: white;">Go Back</a>
+            </button>
+        </div>
+        <div class="chat">
+            <div class="messages">
+                <div class="message sent">Hello Dr. Tetteh</div>
+                <div class="message">Hello, you must be my new patient.</div>
+                <div class="message">How're you doing?</div>
+            </div>
+            <div class="input-area">
+                <input type="text" placeholder="Type your message here...">
+                <button><img src="static/mdi--microphone.svg" alt="Microphone"></button>
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
