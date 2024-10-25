@@ -1,4 +1,4 @@
-# SafeSpace
+# Calm Connect
 A Flask application that provides a safe space for mental health victims to communicate with others in the community and also chat with therapists.
 
 ## Features
