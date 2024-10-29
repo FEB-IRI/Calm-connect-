@@ -116,15 +116,25 @@
                     <li><a href="/community/{{ chat.id }}">{{ chat.name }}</a><hr></li>
                 {% endfor %}
             </ul>
-            <button><a href="/dashboard.html">Go Back</a></button> 
+            <button><a href="/dashboard">Go Back</a></button> 
         </div>
         <div class="chat-area">
-            {% for message in messages %}
-                <div class="message">
-                    <h3>{{ message.user.username }}</h3>
-                    <p>{{ message.content }}</p>
-                </div>
-            {% endfor %}
+            <div class="message">
+                <h3>Marcel Simmons</h3>
+                <p>I had lost all hope in life. I was ready to commit suicide. I thought no one loved me. I was ready to end it all. Then I heard about this web app and eventually spoke to a therapist. I must say, I’ve never felt this good in my life.</p>
+            </div>
+            <div class="message">
+                <h3>Ralph Mensah</h3>
+                <p>I’ve found myself staring down the ledge of almost every tall building I’ve had access to. I’m glad I never jumped. I now have a wife and 2 beautiful kids I love to shreds, and it’s all thanks to the therapy and guidance I’ve received from this app.</p>
+            </div>
+            <div class="message">
+                <h3>Gon Frecks</h3>
+                <p>After reading the amazing stories here, I believe I’ll get better and also share my story with everyone.</p>
+            </div>
+            <div class="message">
+                <h3>Abdullah Mohammed</h3>
+                <p>All praise to Allah for bringing this app into my life. I’ve finally escaped the prison I used to call my life.</p>
+            </div>
             <div class="input-area">
                 <input type="text" placeholder="Type your message here...">
                 <button>Send</button>

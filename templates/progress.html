@@ -104,16 +104,19 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <h2>Progress</h2>
+            <h2>Dashboard</h2>
             <ul>
-                <li><a href="http://127.0.0.1:3000/dashboard.html"><img src="dashboard-icon.png" alt="Dashboard Icon"> Dashboard</a></li><hr/>
-                <li><a href="http://127.0.0.1:3000/Community.html"><img src="community-icon.png" alt="Community Icon"> Community</a></li><hr/>
-                <li><a href="http://127.0.0.1:3000/Meet a Therapist.html"><img src="therapist-icon.png" alt="Therapist Icon"> Meet a Therapist</a></li><hr/>
-                <li><a href="http://127.0.0.1:3000/Chat with a therapist.html"><img src="chat-icon.png" alt="Chat Icon"> Chat with a Therapist</a></li><hr/>
-                <li><a href="https://forms.gle/2J9XnW7ujA1T5Dtg7"><img src="wellness-test-icon.png" alt="Wellness Test Icon"> Take a Wellness Test</a></li><hr/>
-                <li><a href="http://127.0.0.1:3000/Progress.html"><img src="progress-icon.png" alt="Progress Icon"> Progress</a></li><hr/>
-                <li><a href="http://127.0.0.1:3000/Settings.html"><img src="settings-icon.png" alt="Settings Icon"> Settings</a></li><hr/>
+                <li><a href="/dashboard"><img src="static/dashboard-icon.png" alt="Dashboard Icon"> Dashboard</a></li><hr/>
+                <li><a href="/community"><img src="static/community-icon.png" alt="Community Icon"> Community</a></li><hr/>
+                <li><a href="/meet_a_therapist"><img src="static/therapist-icon.png" alt="Therapist Icon"> Meet a Therapist</a></li><hr/>
+                <li><a href="/chat"><img src="static/chat-icon.png" alt="Chat Icon"> Chat with a Therapist</a></li><hr/>
+                <li><a href="https://forms.gle/2J9XnW7ujA1T5Dtg7"><img src="static/wellness-test-icon.png" alt="Wellness Test Icon"> Take a Wellness Test</a></li><hr/>
+                <li><a href="/progress"><img src="static/progress-icon.png" alt="Progress Icon"> Progress</a></li><hr/>
+                <li><a href="/settings"><img src="static/settings-icon.png" alt="Settings Icon"> Settings</a></li><hr/>
             </ul>
+            <form action="/logout" method="get">
+                <button type="submit" style="padding: 10px 20px; font-size: 16px;">Logout</button>
+            </form>
         </div>
         <main class="content">
             <div class="calendar">

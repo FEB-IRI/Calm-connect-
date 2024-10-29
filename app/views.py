@@ -129,13 +129,13 @@ def therapists():
     'therapists.html' template, passing the list of therapists as a 
     template variable.
     """
-    therapists = Therapist.query.all()
+    therapists = db.query(Therapist).all()
     return render_template('therapists.html', therapists=therapists)
 
 
-@bp.route('/group-chat', methods=['GET', 'POST'])
+@bp.route('/community', methods=['GET', 'POST'])
 @login_required
-def group_chat():
+def community():
     """
     Displays a page for users to chat with each other.
 
@@ -148,21 +148,23 @@ def group_chat():
     renders the 'group-chat.html' template, passing the list of GroupChat
     objects as a template variable.
     """
+    group_id = 1
     if request.method == 'POST':
         message = request.form['message']
         sender_id = session.get('user_id')
-        group_chat = GroupChat(sender_id=sender_id, message=message)
+        group_chat = GroupChat(sender_id=sender_id, message=message, group_name=group_id)
         db.add(group_chat)
         db.commit()
-        return redirect(url_for('views.group_chat'))
-    
-    group_chats = GroupChat.query.order_by(GroupChat.created_at.asc()).all()
-    return render_template('group-chat.html', group_chats=group_chats)
+        return redirect(url_for('views.community', group_id=group_id))
+
+    group = db.query(GroupChat).filter_by(id=group_id).one()
+    group_chats = db.query(GroupChat).filter_by(group_name=group_id).order_by(GroupChat.created_at.asc()).all()
+    return render_template('community.html', group=group, group_chat=group_chats)
 
 
-@bp.route('/chat/<int:therapist_id>')
+@bp.route('/chat')
 @login_required
-def chat(therapist_id):
+def chat():
     """
     Displays a page for users to chat with a therapist.
 
@@ -171,10 +173,7 @@ def chat(therapist_id):
     renders the 'chat.html' template, passing the therapist object and the
     list of Chat objects as template variables.
     """
-    
-    therapist = Therapist.query.get(therapist_id)
-    chats = Chat.query.filter_by(recipient_id=therapist_id).all()
-    return render_template('chat.html', therapist=therapist, chats=chats)
+    return render_template('therapists.html')
 
 
 @bp.route('/chat/<int:therapist_id>/send', methods=['POST'])
@@ -221,3 +220,36 @@ def submit_wellness_test():
     db.add(test)
     db.commit()
     return redirect(url_for('views.dashboard'))
+
+
+@bp.route('/settings')
+@login_required
+def settings():
+    """
+    Displays a page for users to manage their profile.
+
+    This view renders the 'settings.html' template.
+    """
+    return render_template('settings.html')
+
+
+@bp.route('/progress')
+@login_required
+def progress():
+    """
+    Displays a page for users to view their progress.
+
+    This view renders the 'progress.html' template.
+    """
+    return render_template('progress.html')
+
+
+@bp.route('/meet_a_therapist')
+@login_required
+def meet_a_therapist():
+    """
+    Displays a page for users to view their available therapists.
+
+    This view renders the 'meet-a-therapist.html' template.
+    """
+    return render_template('meet_a_therapist.html')
